@@ -100,3 +100,40 @@ library(lubridate)
 
 #ggsave(filename = paste0("plots/plot4/plot_", as.numeric(Sys.time()), ".png"))
 ```
+
+# Where?
+
+```{r}
+library(ggplot2)
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(sf)
+library(tidyverse)
+
+ethiopia <- ne_countries(country = "ethiopia", scale = "medium", returnclass = "sf")
+
+ethiopia_bbox <- st_bbox(ethiopia)
+
+ethiopia_water <- tuesdata$water %>%
+  filter(country_name == "Ethiopia") %>%
+  filter(lat_deg >= ethiopia_bbox$ymin) %>%
+  filter(lat_deg <= ethiopia_bbox$ymax) %>%
+  filter(lon_deg >= ethiopia_bbox$xmin) %>%
+  filter(lon_deg <= ethiopia_bbox$xmax)
+```
+
+```{r}
+ethiopia_water_sf <- ethiopia_water %>%
+  st_as_sf(coords = c("lon_deg", "lat_deg"), crs = 4326, agr = "constant")
+```
+
+```{r}
+ggplot() +
+  geom_sf(data = ethiopia) +
+  geom_sf(aes(colour = water_source), data = ethiopia_water_sf) +
+  labs(
+    title = "Ethiopia Water Point Map"
+  )
+
+ggsave(filename = paste0("plots/plot5/plot_", as.numeric(Sys.time()), ".png"))
+```
