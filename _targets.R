@@ -13,7 +13,17 @@ list(
   ),
   tar_target(
        name = water_pp,
-    command = pp_water(water)
+    command = {
+      water |>
+	rename(
+	      lat = lat_deg,
+	      lon = lon_deg,
+	  country = country_name
+	) |>
+	mutate(
+	  water_source = str_replace(water_source, " \\(River/Stream/Lake/Pond/Dam\\)", "")
+	)
+    }
   ),
   tar_target(
        name = ethiopia_sf,
@@ -52,6 +62,12 @@ list(
   tar_target(
        name = ethiopia_water_sources_map,
     command = {
+
+      background_colour <- "#060a19"
+            text_colour <- "#ebecf4"
+              base_size <- 12
+                  font1 <- "Cardo"
+
       ggmap(ethiopia_map) +
         geom_point(aes(x = lon, y = lat), data = ethiopia_water, size = .2, alpha = .2) +
         facet_wrap(~water_source) +
@@ -59,7 +75,28 @@ list(
              title = "Water Sources in Ethiopia",
           subtitle = "Source: WPDX | Graphic: Matthew Henderson"
         ) +
-        theme_mjh(background_colour = "#060a19", text_colour = "#ebecf4")
+	theme(
+	  plot.margin       = margin(20, 10, 20, 10),
+	  panel.background  = element_rect(fill = background_colour, colour = NA),
+	  plot.background   = element_rect(fill = background_colour, colour = NA),
+	  legend.background = element_rect(fill = background_colour),
+	  strip.background  = element_rect(fill = background_colour),
+	  plot.title        = element_text(colour = text_colour, size = 26, hjust = 1, family = font1, margin = margin(5, 0, 20, 0)),
+	  plot.subtitle     = element_text(colour = text_colour, size = base_size, hjust = 1, family = font1, margin = margin(5, 0, 10, 0)),
+	  plot.caption      = element_text(colour = text_colour, size = base_size, hjust = 0.5, family = font1),
+	  legend.title      = element_text(colour = text_colour, size = base_size, hjust = 0.5, family = font1),
+	  strip.text        = element_text(colour = text_colour, size = base_size, hjust = 0.5, family = font1, margin = margin(5, 0, 5, 0)),
+	  legend.position   = "none",
+	  axis.title.x      = element_blank(),
+	  axis.title.y      = element_blank(),
+	  axis.text.x       = element_blank(),
+	  axis.text.y       = element_blank(),
+	  axis.ticks.x      = element_blank(),
+	  axis.ticks.y      = element_blank(),
+	  panel.grid.major  = element_blank(),
+	  panel.grid.minor  = element_blank()
+	)
+
     }
   ),
   tar_target(
