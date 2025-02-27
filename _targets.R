@@ -63,8 +63,8 @@ list(
        name = ethiopia_water_sources_map,
     command = {
 
-      background_colour <- "#060a19"
-            text_colour <- "#ebecf4"
+      background_colour <- "white"
+            text_colour <- "black"
               base_size <- 12
                   font1 <- "Cardo"
 
