@@ -1,3 +1,4 @@
-# Water Sources
+# tt-water-sources
 
-![](img/water-sources.png)
+![](plot/water-sources.png)
+
