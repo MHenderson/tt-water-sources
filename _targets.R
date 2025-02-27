@@ -39,13 +39,13 @@ list(
     command = {
       get_stadiamap(
            zoom = 7,
-	maptype = "stamen_terrain"
+	maptype = "stamen_terrain",
            bbox = c(
              left   = ethiopia_bbox[["xmin"]],
              right  = ethiopia_bbox[["xmax"]],
              bottom = ethiopia_bbox[["ymin"]],
              top    = ethiopia_bbox[["ymax"]]
-           ),
+           )
       )
     }
   ),
