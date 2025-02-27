@@ -1,7 +1,7 @@
 library(targets)
 
 tar_option_set(
-  packages = c("dplyr", "ggmap", "ragg", "readr", "rnaturalearth", "sf", "stringr", "tibble")
+  packages = c("dplyr", "ggmap", "readr", "rnaturalearth", "sf", "stringr", "tibble")
 )
 
 tar_source()
@@ -65,9 +65,13 @@ list(
   tar_target(
        name = save_map,
     command = {
-      agg_png("img/water-sources.png", res = 300, height = 8, width = 7.43, units = "in")
-      print(ethiopia_water_sources_map)
-      dev.off()
+      ggsave(
+            plot = ethiopia_water_sources_map,
+	filename = "plot/water-sources.png",
+	   width = 4000,
+	  height = 3000,
+	   units = "px"
+      )
     }
   )
 )

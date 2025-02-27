@@ -1,0 +1,12 @@
+name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
+water|stem|4e1a6378b3c417f3|6c5b44d00fb5e03d|2c530c1562a7fbd1|-2135480064||t20146.3400837338s|s10987939b|10987939|rds|local|vector|||16.148||
+ethiopia_sf|stem|62631cd88631c12e|ea73e56f377d404e|2c530c1562a7fbd1|1252751338||t20146.3415674252s|s4346b|4346|rds|local|vector|||7.135||
+water_pp|stem|03b388a64bac18cd|c7d2ae720fc5bf58|9049918ab177c44e|-2134597791||t20146.3416391399s|s10982254b|10982254|rds|local|vector|||0.267||
+ethiopia_bbox|stem|c3c66c0ee34dee09|8145906a8f80b9d1|7bd688dca2789839|40998014||t20146.3416393714s|s431b|431|rds|local|vector|||0||
+ethiopia_water|stem|c54859a45d48b367|ddf4a89a06a4a4dd|844636da0bb310e2|-700330272||t20146.3416420567s|s353028b|353028|rds|local|vector|||0.091||
+ethiopia_map|stem|6d75539f3579f219|666f713bcd9f9d62|3f5a2800cf2f808b|-431109276||t20146.3721050578s|s2286254b|2286254|rds|local|vector|||14.428||
+ethiopia_water_sources_map|stem|f192145d147c6c5d|73ea3a8b9bf59e3a|a2495ea768df17c8|919784400||t20146.3721977551s|s18010769b|18010769|rds|local|vector|||0.071||
+theme_mjh|function|2f30c91935544dbe
+.Random.seed|object|85ed43a943665e20
+pp_water|function|f21d9be2afdcc3da
+save_map|stem|7da805ad44700752|1ebb616a4f65af88|3395cd75be75e956|-1668319320||t20146.3739838538s|s75b|75|rds|local|vector|||5.56||
